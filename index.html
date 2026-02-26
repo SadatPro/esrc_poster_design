@@ -127,7 +127,9 @@
             top: 0; left: 0; right: 0;
             background: white;
             color: var(--primary-green);
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: 'Anton', sans-serif;
             font-size: 2.3rem;
             padding: 12px 0;
@@ -135,6 +137,15 @@
             letter-spacing: 1px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.4);
         }
+
+        .bottom-logo {
+            position: absolute;
+            object-fit: contain;
+            z-index: 20; /* Keep above the decorative rings */
+        }
+        
+        .logo-left { left: 20px; height: 110%; top: -5%; } /* 25% Larger ESRC Logo */
+        .logo-right { right: 20px; height: 45%; top: 27.5%; } /* Smaller DIU Logo */
 
         .p-photo-container {
             position: absolute;
@@ -201,7 +212,8 @@
             position: absolute;
             bottom: 0; left: 0; right: 0;
             height: 11%;
-            background: #08120a;
+            background: var(--white); /* Changed to white */
+            border-top: 6px solid var(--accent-green); /* Added top border for separation */
             z-index: 10;
             display: flex;
             justify-content: center;
@@ -209,7 +221,7 @@
             overflow: hidden;
         }
 
-        /* Decorative Rings in Bottom Banner */
+        /* Decorative Rings in Bottom Banner - Updated for White Background */
         .p-deco-rings {
             position: absolute;
             left: -30px;
@@ -217,28 +229,24 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            box-shadow: 0 0 0 6px #1a4d2e, 0 0 0 14px transparent, 0 0 0 20px #1a4d2e, 0 0 0 28px transparent, 0 0 0 34px #1a4d2e;
-            opacity: 0.8;
+            box-shadow: 0 0 0 6px rgba(26,77,46,0.1), 0 0 0 14px transparent, 0 0 0 20px rgba(26,77,46,0.1), 0 0 0 28px transparent, 0 0 0 34px rgba(26,77,46,0.1);
         }
         .p-deco-rings.right {
             left: auto;
             right: -20px;
             bottom: -20px;
-            box-shadow: 0 0 0 6px #1a4d2e, 0 0 0 14px transparent, 0 0 0 20px #1a4d2e;
+            box-shadow: 0 0 0 6px rgba(26,77,46,0.1), 0 0 0 14px transparent, 0 0 0 20px rgba(26,77,46,0.1);
         }
 
         .p-vote-wrap {
             font-family: 'Anton', sans-serif;
             font-size: 3rem;
-            color: white;
+            color: #1a4d2e; /* Light yellowish green */
+            text-shadow: 3px 3px 0px #b7d0c1; /* Hard shadow for pop */
             display: flex;
             align-items: center;
             gap: 12px;
             z-index: 2;
-        }
-        .p-vote-wrap svg {
-            width: 40px;
-            height: 40px;
         }
 
         /* Tabs */
@@ -323,6 +331,7 @@
         @media (max-width: 768px) {
             .controls { width: 100%; }
             .p-name { font-size: 3rem; }
+            .p-top-banner { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -395,7 +404,9 @@
             <div class="poster-wrapper" id="capture-area">
                 <div class="p-bg"></div>
                 
-                <div class="p-top-banner">ESRC ELECTION 2026 -2027</div>
+                <div class="p-top-banner">
+                    <span>ESRC ELECTION 2026 -2027</span>
+                </div>
 
                 <div class="p-photo-container">
                     <img id="viewPhoto" src="https://via.placeholder.com/600x800?text=Upload+Photo" class="p-photo">
@@ -410,20 +421,13 @@
                 </div>
 
                 <div class="p-bottom-banner">
+                    <img src="https://raw.githubusercontent.com/SadatPro/img/refs/heads/main/esrc_logo.png" class="bottom-logo logo-left" alt="ESRC Logo">
                     <div class="p-deco-rings"></div>
                     <div class="p-deco-rings right"></div>
                     <div class="p-vote-wrap">
                         VOTE 
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.02-.3 3"/>
-                            <path d="M7 22c-.6-2.8-.4-5.6.5-8"/>
-                            <path d="M17 22c.6-2.8.4-5.6-.5-8"/>
-                            <path d="M2 12a10 10 0 0 1 18.29-5.69"/>
-                            <path d="M12 2a10 10 0 0 1 10 10c0 1.1-.1 2.19-.3 3.25"/>
-                            <path d="M8 3.17A10 10 0 0 1 20.3 9.6"/>
-                            <path d="M12 18c-1.38 0-2.5-1.12-2.5-2.5V12a2.5 2.5 0 0 1 5 0v3.5c0 1.38-1.12 2.5-2.5 2.5Z"/>
-                        </svg>
                     </div>
+                    <img src="https://raw.githubusercontent.com/SadatPro/img/refs/heads/main/daffodil.png" class="bottom-logo logo-right" alt="DIU Logo">
                 </div>
             </div>
             <p style="margin-top: 15px; font-size: 13px; color: #666;">Preview may look slightly different from final download.</p>
@@ -457,7 +461,9 @@
                 <div class="p-bg"></div>
                 <div style="position: absolute; inset:0; background:rgba(0,0,0,0.65); z-index:1;"></div>
                 
-                <div class="p-top-banner">ESRC ELECTION 2026 -2027</div>
+                <div class="p-top-banner">
+                    <span>ESRC ELECTION 2026 -2027</span>
+                </div>
 
                 <div class="m-content">
                     <div class="m-title" id="viewManTitle">MY MANIFESTO</div>
@@ -471,20 +477,13 @@
                 </div>
 
                 <div class="p-bottom-banner">
+                    <img src="https://raw.githubusercontent.com/SadatPro/img/refs/heads/main/esrc_logo.png" class="bottom-logo logo-left" alt="ESRC Logo">
                     <div class="p-deco-rings"></div>
                     <div class="p-deco-rings right"></div>
                     <div class="p-vote-wrap">
                         VOTE 
-                        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.02-.3 3"/>
-                            <path d="M7 22c-.6-2.8-.4-5.6.5-8"/>
-                            <path d="M17 22c.6-2.8.4-5.6-.5-8"/>
-                            <path d="M2 12a10 10 0 0 1 18.29-5.69"/>
-                            <path d="M12 2a10 10 0 0 1 10 10c0 1.1-.1 2.19-.3 3.25"/>
-                            <path d="M8 3.17A10 10 0 0 1 20.3 9.6"/>
-                            <path d="M12 18c-1.38 0-2.5-1.12-2.5-2.5V12a2.5 2.5 0 0 1 5 0v3.5c0 1.38-1.12 2.5-2.5 2.5Z"/>
-                        </svg>
                     </div>
+                    <img src="https://raw.githubusercontent.com/SadatPro/img/refs/heads/main/daffodil.png" class="bottom-logo logo-right" alt="DIU Logo">
                 </div>
             </div>
             <p style="margin-top: 15px; font-size: 13px; color: #666;">Manifesto preview.</p>
@@ -496,6 +495,19 @@
     <script>
         let userImg = null;
         const bgImgUrl = 'https://raw.githubusercontent.com/SadatPro/img/refs/heads/main/file_000000004f7872069d9dc0a8627d4d26.png';
+        const esrcLogoUrl = 'https://raw.githubusercontent.com/SadatPro/img/refs/heads/main/esrc_logo.png';
+        const diuLogoUrl = 'https://raw.githubusercontent.com/SadatPro/img/refs/heads/main/daffodil.png';
+
+        // Helper function to load cross-origin images safely for Canvas
+        const loadImage = (url) => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = "anonymous";
+                img.onload = () => resolve(img);
+                img.onerror = () => reject(new Error(`Failed to load image at ${url}`));
+                img.src = url;
+            });
+        };
 
         function handleImg(e) {
             const file = e.target.files[0];
@@ -528,6 +540,23 @@
             }
         }
 
+        // Draw the top banner (reusable for both poster and manifesto)
+        function drawTopBanner(ctx, width, height, topBannerHeight) {
+            ctx.save();
+            ctx.shadowColor = "rgba(0,0,0,0.3)";
+            ctx.shadowBlur = 30;
+            ctx.shadowOffsetY = 15;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, width, topBannerHeight);
+            ctx.restore();
+            
+            ctx.fillStyle = '#1a4d2e';
+            ctx.font = '900 130px Anton';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText("ESRC ELECTION 2026 -2027", width/2, topBannerHeight / 2 + 10);
+        }
+
         async function downloadPoster() {
             const canvas = document.getElementById('render-canvas');
             const ctx = canvas.getContext('2d');
@@ -538,12 +567,14 @@
             canvas.width = width;
             canvas.height = height;
 
+            // Load all required images asynchronously
+            const [bg, esrcLogo, diuLogo] = await Promise.all([
+                loadImage(bgImgUrl),
+                loadImage(esrcLogoUrl).catch(() => null), // fail gracefully if logo fails
+                loadImage(diuLogoUrl).catch(() => null)
+            ]);
+
             // 1. Draw Background
-            const bg = new Image();
-            bg.crossOrigin = "anonymous";
-            bg.src = bgImgUrl;
-            
-            await new Promise(resolve => bg.onload = resolve);
             ctx.drawImage(bg, 0, 0, width, height);
 
             // 2. Candidate Photo with Adjustments
@@ -587,21 +618,8 @@
             ctx.fillStyle = grad;
             ctx.fillRect(0, height - 1200, width, 1200 - bottomBannerHeight);
 
-            // 4. Top White Banner with Shadow
-            const topBannerHeight = 220;
-            ctx.save();
-            ctx.shadowColor = "rgba(0,0,0,0.3)";
-            ctx.shadowBlur = 30;
-            ctx.shadowOffsetY = 15;
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, width, topBannerHeight);
-            ctx.restore();
-            
-            ctx.fillStyle = '#1a4d2e';
-            ctx.font = '900 130px Anton';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText("ESRC ELECTION 2026 -2027", width/2, topBannerHeight / 2 + 10);
+            // 4. Top White Banner
+            drawTopBanner(ctx, width, height, 220);
 
             // 5. Candidate Name & Position
             const name = document.getElementById('nameInp').value || "SADAT MAHMUD";
@@ -616,6 +634,7 @@
 
             ctx.fillStyle = "white";
             ctx.font = "900 240px Anton";
+            ctx.textAlign = 'center';
             ctx.fillText(name.toUpperCase(), width/2, height - bottomBannerHeight - 150);
 
             // Position with Green Color and better spacing
@@ -627,12 +646,16 @@
             ctx.shadowBlur = 0;
             ctx.shadowOffsetY = 0;
 
-            // 6. Bottom Banner
-            ctx.fillStyle = '#08120a';
+            // 6. Bottom Banner (White Background)
+            ctx.fillStyle = '#ffffff'; // Changed to white background
             ctx.fillRect(0, height - bottomBannerHeight, width, bottomBannerHeight);
+            
+            // Add top accent green border to the white banner
+            ctx.fillStyle = '#2ecc71';
+            ctx.fillRect(0, height - bottomBannerHeight, width, 15);
 
-            // Decorative rings on bottom banner
-            ctx.strokeStyle = '#1a4d2e';
+            // Decorative rings on bottom banner (Lighter green so it looks good on white)
+            ctx.strokeStyle = 'rgba(26, 77, 46, 0.15)';
             for(let i=1; i<=4; i++) {
                 ctx.lineWidth = 15;
                 ctx.beginPath();
@@ -646,38 +669,48 @@
                 ctx.stroke();
             }
 
-            // VOTE Text and Fingerprint Icon
+            // Draw Logos on Bottom Banner
+            const esrcTargetHeight = bottomBannerHeight * 1.10; // 25% Larger ESRC logo
+            const diuTargetHeight = bottomBannerHeight * 0.45;  // Smaller DIU logo
+            
+            const esrcY = height - bottomBannerHeight + (bottomBannerHeight - esrcTargetHeight) / 2;
+            const diuY = height - bottomBannerHeight + (bottomBannerHeight - diuTargetHeight) / 2;
+            const edgePadding = 80;
+
+            if (esrcLogo) {
+                const esrcAspect = esrcLogo.width / esrcLogo.height;
+                ctx.drawImage(esrcLogo, edgePadding, esrcY, esrcTargetHeight * esrcAspect, esrcTargetHeight);
+            }
+            
+            if (diuLogo) {
+                const diuAspect = diuLogo.width / diuLogo.height;
+                const diuWidth = diuTargetHeight * diuAspect;
+                ctx.drawImage(diuLogo, width - edgePadding - diuWidth, diuY, diuWidth, diuTargetHeight);
+            }
+
+            // VOTE Text
             const voteText = "VOTE";
+            
+            // Apply light yellowish green with bold hard shadow
+            ctx.fillStyle = "#d4ed31"; 
+            ctx.shadowColor = "#1a4d2e";
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 8;
+            ctx.shadowOffsetY = 8;
+            
             ctx.font = "900 190px Anton";
-            ctx.textBaseline = "middle"; // FIX: Reset to middle for perfect centering
-            const textWidth = ctx.measureText(voteText).width;
+            ctx.textBaseline = "middle"; 
             
-            const iconScale = 7; // Increased scale so it matches the font size
-            const iconSize = 24 * iconScale; // The SVG is 24x24 natively
-            const gap = 40;
-            const totalWidth = textWidth + gap + iconSize;
-            
-            const startX = (width - totalWidth) / 2;
             const centerY = height - (bottomBannerHeight / 2);
 
-            ctx.fillStyle = "white";
-            ctx.textAlign = "left";
+            ctx.textAlign = "center";
             // +15 is an optical adjustment to visually center the bold Anton font
-            ctx.fillText(voteText, startX, centerY + 15); 
+            ctx.fillText(voteText, width / 2, centerY + 15); 
 
-            // Draw SVG Fingerprint using Path2D
-            const fpPath = new Path2D("M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.02-.3 3 M7 22c-.6-2.8-.4-5.6.5-8 M17 22c.6-2.8.4-5.6-.5-8 M2 12a10 10 0 0 1 18.29-5.69 M12 2a10 10 0 0 1 10 10c0 1.1-.1 2.19-.3 3.25 M8 3.17A10 10 0 0 1 20.3 9.6 M12 18c-1.38 0-2.5-1.12-2.5-2.5V12a2.5 2.5 0 0 1 5 0v3.5c0 1.38-1.12 2.5-2.5 2.5Z");
-            
-            ctx.save();
-            // Perfectly align the icon with the center Y coordinate
-            ctx.translate(startX + textWidth + gap, centerY - (iconSize / 2));
-            ctx.scale(iconScale, iconScale); 
-            ctx.strokeStyle = "white";
-            ctx.lineWidth = 1.5; // Slightly thicker lines for visibility
-            ctx.lineCap = "round";
-            ctx.lineJoin = "round";
-            ctx.stroke(fpPath);
-            ctx.restore();
+            // Reset Shadows
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.shadowColor = "transparent";
 
             // 7. Final Trigger
             const link = document.createElement('a');
@@ -752,11 +785,14 @@
             canvas.width = width;
             canvas.height = height;
 
+            // Load all required images asynchronously
+            const [bg, esrcLogo, diuLogo] = await Promise.all([
+                loadImage(bgImgUrl),
+                loadImage(esrcLogoUrl).catch(() => null),
+                loadImage(diuLogoUrl).catch(() => null)
+            ]);
+
             // 1. Draw Background
-            const bg = new Image();
-            bg.crossOrigin = "anonymous";
-            bg.src = bgImgUrl;
-            await new Promise(resolve => bg.onload = resolve);
             ctx.drawImage(bg, 0, 0, width, height);
 
             // 2. Dark Overlay for readability
@@ -764,15 +800,7 @@
             ctx.fillRect(0, 0, width, height);
 
             // 3. Top White Banner
-            const topBannerHeight = 220;
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, width, topBannerHeight);
-            
-            ctx.fillStyle = '#1a4d2e';
-            ctx.font = '900 130px Anton';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText("ESRC ELECTION 2026 -2027", width/2, topBannerHeight / 2 + 10);
+            drawTopBanner(ctx, width, height, 220);
 
             // 4. Manifesto Title
             ctx.textBaseline = 'alphabetic';
@@ -814,12 +842,16 @@
             ctx.shadowBlur = 0;
             ctx.shadowOffsetY = 0;
 
-            // 6. Bottom Banner (same logic as poster)
+            // 6. Bottom Banner (White Background)
             const bottomBannerHeight = 330;
-            ctx.fillStyle = '#08120a';
+            ctx.fillStyle = '#ffffff'; // White background
             ctx.fillRect(0, height - bottomBannerHeight, width, bottomBannerHeight);
+            
+            // Accent border
+            ctx.fillStyle = '#2ecc71';
+            ctx.fillRect(0, height - bottomBannerHeight, width, 15);
 
-            ctx.strokeStyle = '#1a4d2e';
+            ctx.strokeStyle = 'rgba(26, 77, 46, 0.15)'; // Subtler rings on white
             for(let i=1; i<=4; i++) {
                 ctx.lineWidth = 15;
                 ctx.beginPath();
@@ -833,34 +865,46 @@
                 ctx.stroke();
             }
 
+            // Draw Logos on Bottom Banner
+            const esrcTargetHeight_m = bottomBannerHeight * 1.10; // 25% Larger ESRC logo
+            const diuTargetHeight_m = bottomBannerHeight * 0.45;  // Smaller DIU logo
+            
+            const esrcY_m = height - bottomBannerHeight + (bottomBannerHeight - esrcTargetHeight_m) / 2;
+            const diuY_m = height - bottomBannerHeight + (bottomBannerHeight - diuTargetHeight_m) / 2;
+            const edgePadding_m = 80;
+
+            if (esrcLogo) {
+                const esrcAspect = esrcLogo.width / esrcLogo.height;
+                ctx.drawImage(esrcLogo, edgePadding_m, esrcY_m, esrcTargetHeight_m * esrcAspect, esrcTargetHeight_m);
+            }
+            
+            if (diuLogo) {
+                const diuAspect = diuLogo.width / diuLogo.height;
+                const diuWidth = diuTargetHeight_m * diuAspect;
+                ctx.drawImage(diuLogo, width - edgePadding_m - diuWidth, diuY_m, diuWidth, diuTargetHeight_m);
+            }
+
             const voteText = "VOTE";
+            
+            // Yellowish green with dark hard shadow
+            ctx.fillStyle = "#d4ed31"; 
+            ctx.shadowColor = "#1a4d2e";
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetX = 8;
+            ctx.shadowOffsetY = 8;
+
             ctx.font = "900 190px Anton";
             ctx.textBaseline = "middle"; 
-            const textWidth = ctx.measureText(voteText).width;
             
-            const iconScale = 7; 
-            const iconSize = 24 * iconScale; 
-            const gap = 40;
-            const totalWidth = textWidth + gap + iconSize;
-            
-            const startX_vote = (width - totalWidth) / 2;
             const centerY = height - (bottomBannerHeight / 2);
 
-            ctx.fillStyle = "white";
-            ctx.textAlign = "left";
-            ctx.fillText(voteText, startX_vote, centerY + 15); 
+            ctx.textAlign = "center";
+            ctx.fillText(voteText, width / 2, centerY + 15); 
 
-            const fpPath = new Path2D("M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.02-.3 3 M7 22c-.6-2.8-.4-5.6.5-8 M17 22c.6-2.8.4-5.6-.5-8 M2 12a10 10 0 0 1 18.29-5.69 M12 2a10 10 0 0 1 10 10c0 1.1-.1 2.19-.3 3.25 M8 3.17A10 10 0 0 1 20.3 9.6 M12 18c-1.38 0-2.5-1.12-2.5-2.5V12a2.5 2.5 0 0 1 5 0v3.5c0 1.38-1.12 2.5-2.5 2.5Z");
-            
-            ctx.save();
-            ctx.translate(startX_vote + textWidth + gap, centerY - (iconSize / 2));
-            ctx.scale(iconScale, iconScale); 
-            ctx.strokeStyle = "white";
-            ctx.lineWidth = 1.5; 
-            ctx.lineCap = "round";
-            ctx.lineJoin = "round";
-            ctx.stroke(fpPath);
-            ctx.restore();
+            // Reset Shadows
+            ctx.shadowOffsetX = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.shadowColor = "transparent";
 
             // 7. Download
             const link = document.createElement('a');
