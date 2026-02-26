@@ -346,12 +346,20 @@
             <div class="input-group">
                 <label>Position</label>
                 <select id="posInp" onchange="sync()">
-                    <option value="PRESIDENT CANDIDATE">President Candidate</option>
-                    <option value="VP CANDIDATE">VP Candidate</option>
-                    <option value="GENERAL SECRETARY">General Secretary</option>
-                    <option value="TREASURER">Treasurer</option>
-                    <option value="CULTURAL SECRETARY">Cultural Secretary</option>
-                    <option value="ORGANIZING SECRETARY">Organizing Secretary</option>
+                    <optgroup label="Phase 1 • Leadership">
+                        <option value="PRESIDENT CANDIDATE">President</option>
+                        <option value="VICE PRESIDENT CANDIDATE">Vice President - 2</option>
+                        <option value="GENERAL SECRETARY CANDIDATE">General Secretary</option>
+                        <option value="ASSISTANT GENERAL SECRETARY CANDIDATE">Assistant General Secretary - 2</option>
+                    </optgroup>
+                    <optgroup label="Phase 2 • Executive Council">
+                        <option value="TREASURER CANDIDATE">Treasurer</option>
+                        <option value="WOMEN'S SECRETARY CANDIDATE">Women's Secretary</option>
+                        <option value="MEDIA SECRETARY CANDIDATE">Media Secretary</option>
+                        <option value="OFFICE SECRETARY CANDIDATE">Office Secretary</option>
+                        <option value="ORGANIZING SECRETARY CANDIDATE">Organizing Secretary</option>
+                        <option value="PRESS SECRETARY CANDIDATE">Press Secretary</option>
+                    </optgroup>
                 </select>
             </div>
 
